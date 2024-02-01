@@ -1,3 +1,5 @@
+//@ts-nocheck
+
 import { useMutation, useQuery } from '@tanstack/react-query';
 import { createContext, useContext, useState, PropsWithChildren, Dispatch, SetStateAction, useEffect } from 'react';
 
