@@ -1,5 +1,5 @@
 import { createLazyFileRoute } from '@tanstack/react-router';
-import { Content, CheckList } from '../components/home';
+import { CheckList } from '../components/CheckList';
 import { useCheckList } from '../providers/CheckListProvider';
 import { IoMdClose } from "react-icons/io";
 import { ChangeEvent, useRef } from 'react';
@@ -22,17 +22,15 @@ export const Route = createLazyFileRoute('/')({
     }
 
     return (
-      <Content>
-          <CheckList>
-              {checkListItems.map(({ id, checked, text }) => 
-                <li key={id}>
-                  <input ref={(ref) => itemsRef.current[id] = ({ checkRef: ref })} type="checkbox" defaultChecked={checked} onChange={handleChangeCheck(id)} />
-                  <input ref={(ref) => itemsRef.current[id] = ({ ...itemsRef.current[id], inputRef: ref })} type="text" defaultValue={text} />
-                  <IoMdClose onClick={handleClickAddToRemovedList(id)} />
-                </li>
-              )}
-          </CheckList>
-      </Content>
+      <CheckList>
+          {checkListItems.map(({ id, checked, text }) => 
+            <li key={id}>
+              <input ref={(ref) => itemsRef.current[id] = ({ checkRef: ref })} type="checkbox" defaultChecked={checked} onChange={handleChangeCheck(id)} />
+              <input ref={(ref) => itemsRef.current[id] = ({ ...itemsRef.current[id], inputRef: ref })} type="text" defaultValue={text} />
+              <IoMdClose onClick={handleClickAddToRemovedList(id)} size={20} />
+            </li>
+          )}
+      </CheckList>
     );
   },
 })

@@ -49,6 +49,7 @@ export const Title = styled.h1`
    color: white;
    margin: 0;
    display: none;
+   min-width: 85px;
 
    @media (min-width: 450px) {
         display: block;

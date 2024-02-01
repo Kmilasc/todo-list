@@ -1,6 +1,8 @@
 import { createFileRoute } from '@tanstack/react-router'
 import { IRemovedListItem, useCheckList } from '../providers/CheckListProvider';
-import { IoMdClose } from 'react-icons/io';
+import { RiInboxUnarchiveLine } from "react-icons/ri";
+import {Item} from "../components/trash.lazy"
+import { CheckList } from '../components/CheckList';
 
 export const Route = createFileRoute('/trash')({
   component: () => {
@@ -12,15 +14,15 @@ export const Route = createFileRoute('/trash')({
     }
 
     return (
-      <>
-              {removedListItems.map(({ id, text, checked }) => 
-                <li key={id}>
-                  <input type="checkbox" defaultChecked={checked} disabled />
-                  <input type="text" defaultValue={text} disabled />
-                  <IoMdClose onClick={handleClickAddToCheckList({ id, text, checked })} />
-                </li>
-              )}
-      </>
+      <CheckList>
+        {removedListItems.map(({ id, text, checked }) => 
+          <li key={id}>
+            <input type="checkbox" defaultChecked={checked} disabled />
+            <Item type="text" defaultValue={text} disabled />
+            <RiInboxUnarchiveLine onClick={handleClickAddToCheckList({ id, text, checked })} size={20} />
+          </li>
+        )}
+      </CheckList>
     );
   }
 })
