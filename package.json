@@ -19,6 +19,7 @@
     "tsc-silent": "1.2.2"
   },
   "devDependencies": {
+    "@tanstack/router-vite-plugin": "1.15.4",
     "@types/react": "^18.2.43",
     "@types/react-dom": "^18.2.17",
     "@types/styled-components": "^5.1.34",
